@@ -1,4 +1,9 @@
 Make sure to have JRE installed before running the .BAT file.
+---if grid doesn't appear correctly ----
+1. Right click on the command console bar.
+2. Go to Properties
+3. Layout
+4. Change WindowSize Width to 150
 
 -Credits-
 Gene Roddenberry(of course)
