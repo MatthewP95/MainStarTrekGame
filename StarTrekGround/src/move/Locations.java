@@ -5,31 +5,32 @@ import enemy.RandomEnemy;
 
 public class Locations {
 
-  public String[][] eventMap = new String[20][20];
+  public String[][] eventMap = new String[21][21];
   String enemy = "E";
   String planet = "P";
   String space = "*";
   String ship = SpaceMove.ship;
   RandomEnemy re = new RandomEnemy();
+  SpaceMove sm = new SpaceMove();
 
   public void createMap(String[][] starMap) {
 
     Random rand = new Random();
 
-    for (int i = 0; i < starMap.length; i++) {
-      for (int j = 0; j < starMap[i].length; j++) {
+    for (int i = 1; i < starMap.length; i++) {
+      for (int j = 1; j < starMap[i].length; j++) {
         /*
          * place enemy, planet, or empty space based on random number generator lines 19 - 27 "*"
          * empty space, "E" enemy, "P" planet.
          */
         int random = rand.nextInt(10) + 1;
-        if (random == 3 && starMap[i][j] != starMap[0][0]) {
+        if (random == 3 && starMap[i][j] != starMap[1][1]) {
           int placePlanet = rand.nextInt(5) + 1;
           if (placePlanet == 4) {
             starMap[i][j] = planet;
           } else
             starMap[i][j] = enemy;
-        } else if (i == 0 && j == 0)
+        } else if (i == 1 && j == 1)
           starMap[i][j] = ship;
         else
           starMap[i][j] = space;
@@ -41,24 +42,23 @@ public class Locations {
 
   public void moveShip() {
 
-    for (int i = 0; i < 19; i++) {
-      for (int j = 0; j < 19; j++) {
+    for (int i = 1; i < 20; i++) {
+      for (int j = 1; j < 20; j++) {
         if (eventMap[i][j] == ship) {
           eventMap[i][j] = space;
           eventMap[SpaceMove.getX()][SpaceMove.getY()] = ship;
         }
       }
     }
-    System.out.println("Ship is at: " + SpaceMove.getX() + ", " + SpaceMove.getY());
   }
 
   public void printMap(String[][] starMap) {
 
-    boolean DEBUG = true;
+    boolean DEBUG = false;
 
-    for (int i = 0; i < starMap.length; i++) {
+    for (int i = 1; i < starMap.length; i++) {
 
-      for (int j = 0; j < starMap[i].length; j++) {
+      for (int j = 1; j < starMap[i].length; j++) {
 
         // checks where createMap placed planets/enemies
         if (DEBUG) {

@@ -1,4 +1,4 @@
-package combat;
+package combatGround;
 
 public class Combat implements Commands	{
 
