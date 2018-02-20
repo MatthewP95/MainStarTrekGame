@@ -1,0 +1,6 @@
+Make sure to have JRE installed before running the .BAT file.
+
+-Credits-
+Gene Roddenberry(of course)
+
+Matthew P
