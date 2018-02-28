@@ -2,7 +2,7 @@ package player;
 
 public enum Classes {
 
-	Command("Commander ", 85, 80, 8, 5), Science("Science Officer", 75, 95, 6, 9), Engineer("Engineer Officer", 100, 60, 6, 10);
+	Command("Commander", 85, 80, 8, 5), Science("Science Officer", 75, 95, 6, 9), Engineer("Engineer Officer", 100, 60, 6, 10);
 
 	private String name;
 	private int health;

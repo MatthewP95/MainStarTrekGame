@@ -1,4 +1,4 @@
-package enemy;
+package combatGround;
 
 public enum Enemies {
 	

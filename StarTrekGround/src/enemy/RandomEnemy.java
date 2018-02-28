@@ -3,6 +3,10 @@ package enemy;
 import java.util.Random;
 
 import CombatSpace.ChooseShips;
+import CombatSpace.FederationFleet;
+import CombatSpace.KlingonFleet;
+import CombatSpace.RomulanFleet;
+import combatGround.Enemies;
 
 public class RandomEnemy {
 
@@ -14,18 +18,36 @@ public class RandomEnemy {
     ChooseShips cs = new ChooseShips();
     Random rand = new Random();
 
-    int choose = rand.nextInt(3) + 1;
-
-    switch (choose) {
-      case 1:
-        cs.aiChoiceF();
-        break;
-      case 2:
-        cs.aiChoiceK();
-        break;
-      case 3:
-        cs.aiChoiceR();
-        break;
+    int choose = rand.nextInt(2) + 1;
+    if (ChooseShips.x.equals(FederationFleet.a) | ChooseShips.x.equals(FederationFleet.b) | ChooseShips.x.equals(FederationFleet.c)) {
+      switch (choose) {
+        case 1:
+          cs.aiChoiceK();
+          break;
+        case 2:
+          cs.aiChoiceR();
+          break;
+      }
+    }
+    if (ChooseShips.x.equals(KlingonFleet.a) | ChooseShips.x.equals(KlingonFleet.b) | ChooseShips.x.equals(KlingonFleet.c)) {
+      switch(choose) {
+        case 1:
+          cs.aiChoiceF();
+          break;
+        case 2:
+          cs.aiChoiceR();
+          break;
+      }
+    }
+    if(ChooseShips.x.equals(RomulanFleet.a) | ChooseShips.x.equals(RomulanFleet.b) | ChooseShips.x.equals(RomulanFleet.c)) {
+      switch(choose) {
+        case 1:
+          cs.aiChoiceF();
+          break;
+        case 2:
+          cs.aiChoiceR();
+          break;
+      }
     }
   }
 
