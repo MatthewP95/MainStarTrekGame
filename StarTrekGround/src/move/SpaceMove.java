@@ -2,16 +2,22 @@ package move;
 
 import java.io.IOException;
 import java.util.Scanner;
+import combatGround.Player;
+import CombatSpace.ChooseShips;
 
 public class SpaceMove {
 
-  public static String ship = "S";
-  private static boolean battle;
+  private String ship = "S";
+  private boolean battle;
   private boolean beam;
   private static int x = 1;
   private static int y = 1;
   private int warp = 5;
   private int scan = 10;
+
+  public String getShip() {
+    return ship;
+  }
 
   public static int getX() {
     return x;
@@ -21,12 +27,12 @@ public class SpaceMove {
     return y;
   }
 
-  public static boolean getBattle() {
+  public boolean getBattle() {
     return battle;
   }
 
   public void setBattle(boolean battle) {
-    SpaceMove.battle = battle;
+    this.battle = battle;
   }
 
   public boolean getBeam() {
@@ -40,6 +46,7 @@ public class SpaceMove {
   public void beamDown() {
     @SuppressWarnings("resource")
     Scanner input = new Scanner(System.in);
+    Player player = new Player();
     // Locations loc = new Locations();
     int choice;
 
@@ -54,6 +61,7 @@ public class SpaceMove {
     switch (choice) {
       case 1:
         setBeam(true);
+        player.playerChoose(ChooseShips.x);
         break;
       case 2:
         setBeam(false);
@@ -75,6 +83,7 @@ public class SpaceMove {
         }
       }
     }
+
     if (any == 0) {
       System.out.println("Nothing is out there Captain");
     }
@@ -105,17 +114,13 @@ public class SpaceMove {
         if (x < 1) {
           System.out.println("Going out of bounds, input new destination");
           x++;
-
           shipMove(eventMap, starMap);
-        }
-
-        if ("E".equals(eventMap[x][y])) {
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
           setBattle(true);
 
           break;
-        }
-
-        if ("P".equals(eventMap[x][y])) {
+        } else if ("P".equals(eventMap[x][y])) {
           beamDown();
           break;
         }
@@ -125,19 +130,15 @@ public class SpaceMove {
       case 2:
 
         y++;
-        if (y > 20) {
+        if (y > 10) {
           System.out.println("Going out of bounds, input new destination");
           y--;
           shipMove(eventMap, starMap);
-        }
-
-        if ("E".equals(eventMap[x][y])) {
+        } else if ("E".equals(eventMap[x][y])) {
 
           setBattle(true);
           break;
-        }
-
-        if ("P".equals(eventMap[x][y])) {
+        } else if ("P".equals(eventMap[x][y])) {
           beamDown();
           break;
         }
@@ -147,19 +148,15 @@ public class SpaceMove {
       case 3:
 
         x++;
-        if (x > 20) {
+        if (x > 10) {
           System.out.println("Going out of bounds, input new destination");
           x--;
           shipMove(eventMap, starMap);
-        }
-
-        if ("E".equals(eventMap[x][y])) {
-
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
           setBattle(true);
           break;
-        }
-
-        if ("P".equals(eventMap[x][y])) {
+        } else if ("P".equals(eventMap[x][y])) {
           beamDown();
           break;
         }
@@ -173,15 +170,12 @@ public class SpaceMove {
           System.out.println("Going out of bounds, input new destination");
           y++;
           shipMove(eventMap, starMap);
-        }
-
-        if ("E".equals(eventMap[x][y])) {
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
 
           setBattle(true);
           break;
-        }
-
-        if ("P".equals(eventMap[x][y])) {
+        } else if ("P".equals(eventMap[x][y])) {
           beamDown();
           break;
         }
@@ -191,9 +185,9 @@ public class SpaceMove {
       case 5:
         if (warp > 0) {
           System.out.println("Please plot a course:");
-          System.out.println("Input Y coordinate(1-20):");
+          System.out.println("Input Y coordinate(1-10):");
           x = input.nextInt();
-          System.out.println("Input X coordinate(1-20):");
+          System.out.println("Input X coordinate(1-10):");
           y = input.nextInt();
           if ("E".equals(eventMap[x][y])) {
 
@@ -204,14 +198,16 @@ public class SpaceMove {
             beamDown();
             break;
           }
-          if (x < 1 || y < 0 & x < 20 || y > 20) {
+          if (x < 1 || y < 0 & x < 10 || y > 10) {
             System.out.println("Going out of bounds, input new destination");
             shipMove(eventMap, starMap);
+            break;
           }
           warp--;
         } else {
           System.out.println("Out of Warp Plasma");
           shipMove(eventMap, starMap);
+          break;
         }
         break;
 
@@ -220,23 +216,29 @@ public class SpaceMove {
         int scanX = 0;
         int scanY = 0;
 
-        try {
-          do {
-            System.out.println("Select area to scan: ");
+        if (scan > 0) {
+          try {
+            do {
+              System.out.println("Select area to scan: ");
 
-            System.out.println("Please input Y coordinate(2-19)");
-            scanX = input.nextInt();
+              System.out.println("Please input Y coordinate(2-9)");
+              scanX = input.nextInt();
 
-            System.out.println("Please input X coordinate(2-19)");
-            scanY = input.nextInt();
-          } while (scanX < 2 | scanX > 19 && scanY < 2 | scanY > 19);
+              System.out.println("Please input X coordinate(2-9)");
+              scanY = input.nextInt();
+            } while (scanX < 2 | scanX > 9 && scanY < 2 | scanY > 9);
 
-        } catch (Exception e) {
-          System.out.println("Invalid input, please try again");
+          } catch (Exception e) {
+            System.out.println("Invalid input, please try again");
+            shipMove(eventMap, starMap);
+          }
+          checkCoord(eventMap, scanX, scanY);
+          scan--;
+          break;
+        } else {
+          System.out.println("No more scans available");
           shipMove(eventMap, starMap);
         }
-        checkCoord(eventMap, scanX, scanY);
-        break;
     }
   }
 }

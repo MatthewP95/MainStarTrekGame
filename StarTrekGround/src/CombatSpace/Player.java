@@ -2,6 +2,10 @@ package CombatSpace;
 
 import java.util.Random;
 
+import spaceFaction.FederationFleet;
+import spaceFaction.KlingonFleet;
+import spaceFaction.RomulanFleet;
+
 public class Player implements Commands {
 
   public void attack1(Object Ship1, Object Ship2) {
@@ -9,17 +13,17 @@ public class Player implements Commands {
     int energy = 0;
 
     if (OnePlayerTurn.fed) {
-      if (FederationFleet.a == Ship1) { // Well-Rounded Damage
+      if (Ship1.equals(FederationFleet.a)) { // Well-Rounded Damage
         energy = 15 + damage.nextInt(10);
       }
-      if (FederationFleet.b == Ship1) { // Offensive Damage
+      if (Ship1.equals(FederationFleet.b)) { // Offensive Damage
         energy = 20 + damage.nextInt(10);
       }
-      if (FederationFleet.c == Ship1) { // Defensive damage
-        energy = 10 + damage.nextInt(10);
+      if (Ship1.equals(FederationFleet.c)) { // Defensive damage
+        energy = 15 + damage.nextInt(10);
       }
 
-      if (KlingonFleet.a == Ship2 | KlingonFleet.b == Ship2 | KlingonFleet.c == Ship2) {
+      if (Ship2.equals(KlingonFleet.a) | Ship2.equals(KlingonFleet.b) | Ship2.equals(KlingonFleet.c)) {
         System.out.println("The USS " + ChooseShips.getfName() + " is firing phasers!\n");
         ((KlingonFleet) Ship2).setShieldStrength(((KlingonFleet) Ship2).getShieldStrength() - energy); // damage
                                                                                                        // shields
@@ -34,7 +38,7 @@ public class Player implements Commands {
         } else if (((KlingonFleet) Ship2).getShieldStrength() == 0) {
           ((KlingonFleet) Ship2).sethullStrength(((KlingonFleet) Ship2).gethullStrength() - energy); // damage
         }                                                                                            // hull
-      } else if (RomulanFleet.a == Ship2 | RomulanFleet.b == Ship2 | RomulanFleet.c == Ship2) {
+      } else if (Ship2.equals(RomulanFleet.a) | Ship2.equals(RomulanFleet.b) | Ship2.equals(RomulanFleet.c)) {
         System.out.println("The USS " + ChooseShips.getfName() + " is firing phasers!\n");
         ((RomulanFleet) Ship2).setShieldStrength(((RomulanFleet) Ship2).getShieldStrength() - energy); // damage
                                                                                                        // shields
@@ -51,17 +55,17 @@ public class Player implements Commands {
         }                                                                                          // hull
         }
       } else if (OnePlayerTurn.kling) {
-        if (KlingonFleet.a == Ship1) { // Well-Rounded Damage
+        if (Ship1.equals(KlingonFleet.a)) { // Well-Rounded Damage
           energy = 15 + damage.nextInt(10);
         }
-        if (KlingonFleet.b == Ship1) { // Offensive Damage
+        if (Ship1.equals(KlingonFleet.b)) { // Offensive Damage
           energy = 20 + damage.nextInt(10);
         }
-        if (KlingonFleet.c == Ship1) { // Defensive Damage
-          energy = 10 + damage.nextInt(10);
+        if (Ship1.equals(KlingonFleet.c)) { // Defensive Damage
+          energy = 15 + damage.nextInt(10);
         }
 
-        if (FederationFleet.a == Ship2 | FederationFleet.b == Ship2 | FederationFleet.c == Ship2) {
+        if (Ship2.equals(FederationFleet.a) | Ship2.equals(FederationFleet.b) | Ship2.equals(FederationFleet.c)) {
           System.out.println("The KDF " + ChooseShips.getkName() + " is firing disruptors!\n");
           ((FederationFleet) Ship2).setShieldStrength(((FederationFleet) Ship2).getShieldStrength() - energy); // damage
                                                                                                                // shields
@@ -77,7 +81,7 @@ public class Player implements Commands {
             ((FederationFleet) Ship2).sethullStrength(((FederationFleet) Ship2).gethullStrength() - energy); // damage
                                                                                                              // hull
           }
-        } else if (RomulanFleet.a == Ship2 | RomulanFleet.b == Ship2 | RomulanFleet.c == Ship2) {
+        } else if (Ship2.equals(RomulanFleet.a) | Ship2.equals(RomulanFleet.b) | Ship2.equals(RomulanFleet.c)) {
           System.out.println("The KDF " + ChooseShips.getkName() + " is firing disruptors!\n");
           ((RomulanFleet) Ship2).setShieldStrength(((RomulanFleet) Ship2).getShieldStrength() - energy); // damage
                                                                                                          // shields
@@ -96,17 +100,17 @@ public class Player implements Commands {
         }
 
       } else {
-        if (RomulanFleet.a == Ship1) { // Well-Rounded Damage
+        if (Ship1.equals(RomulanFleet.a)) { // Well-Rounded Damage
           energy = 15 + damage.nextInt(10);
         }
-        if (RomulanFleet.b == Ship1) { // Offensive Damage
+        if (Ship1.equals(RomulanFleet.b)) { // Offensive Damage
           energy = 20 + damage.nextInt(10);
         }
-        if (RomulanFleet.c == Ship1) { // Defensive Damage
-          energy = 10 + damage.nextInt(10);
+        if (Ship1.equals(RomulanFleet.c)) { // Defensive Damage
+          energy = 15 + damage.nextInt(10);
         }
 
-        if (FederationFleet.a == Ship2 | FederationFleet.b == Ship2 | FederationFleet.c == Ship2) {
+        if (Ship2.equals(FederationFleet.a) | Ship2.equals(FederationFleet.b) | Ship2.equals(FederationFleet.c)) {
           System.out.println("The RSE " + ChooseShips.getrName() + " is firing disruptors!\n");
           ((FederationFleet) Ship2).setShieldStrength(((FederationFleet) Ship2).getShieldStrength() - energy); // damage
                                                                                                                // shields
@@ -121,7 +125,7 @@ public class Player implements Commands {
           } else if (((FederationFleet) Ship2).getShieldStrength() == 0) {
             ((FederationFleet) Ship2).sethullStrength(((FederationFleet) Ship2).gethullStrength() - energy); // damage
           } // hull
-        } else if (KlingonFleet.a == Ship2 | KlingonFleet.b == Ship2 | KlingonFleet.c == Ship2) {
+        } else if (Ship2.equals(KlingonFleet.a) | Ship2.equals(KlingonFleet.b) | Ship2.equals(KlingonFleet.c)) {
 
           System.out.println("The RSE " + ChooseShips.getrName() + " is firing disruptors!\n");
           ((KlingonFleet) Ship2).setShieldStrength(((KlingonFleet) Ship2).getShieldStrength() - energy); // damage
@@ -146,16 +150,16 @@ public class Player implements Commands {
     Random damage = new Random();
     int torpedo = 0;
     if (OnePlayerTurn.fed) { // if you are Federation
-      if (FederationFleet.a == Ship1) { // Well Rounded Damage
+      if (Ship1.equals(FederationFleet.a)) { // Well Rounded Damage
         torpedo = 30 + damage.nextInt(10);
       }
-      if (FederationFleet.b == Ship1) { // Offensive damage
-        torpedo = 40 + damage.nextInt(10);
+      if (Ship1.equals(FederationFleet.b)) { // Offensive damage
+        torpedo = 30 + damage.nextInt(10);
       }
-      if (FederationFleet.c == Ship1) { // Defensive Damage
-        torpedo = 20 + damage.nextInt(20);
+      if (Ship1.equals(FederationFleet.c)) { // Defensive Damage
+        torpedo = 30 + damage.nextInt(10);
       }
-      if (KlingonFleet.a == Ship2 | KlingonFleet.b == Ship2 | KlingonFleet.c == Ship2) {
+      if (Ship2.equals(KlingonFleet.a) | Ship2.equals(KlingonFleet.b) | Ship2.equals(KlingonFleet.c)) {
         if (((FederationFleet) Ship1).gettNum() >= 1) {
           System.out.println("The USS " + ChooseShips.getfName() + " fired a spread of photon torpedos!\n");
           ((KlingonFleet) Ship2).setShieldStrength(((KlingonFleet) Ship2).getShieldStrength() - torpedo); // damage
@@ -176,7 +180,7 @@ public class Player implements Commands {
         } else if (((FederationFleet) Ship1).gettNum() <= 0) {
           ((FederationFleet) Ship1).settNum(0);
         }
-      } else if (RomulanFleet.a == Ship2 | RomulanFleet.b == Ship2 | RomulanFleet.c == Ship2) {
+      } else if (Ship2.equals(RomulanFleet.a) | Ship2.equals(RomulanFleet.b) | Ship2.equals(RomulanFleet.c)) {
         if (((FederationFleet) Ship1).gettNum() >= 1) {
           System.out.println("The USS " + ChooseShips.getfName() + " fired a spread of photon torpedos!\n");
           ((RomulanFleet) Ship2).setShieldStrength(((RomulanFleet) Ship2).getShieldStrength() - torpedo); // damage
@@ -200,16 +204,16 @@ public class Player implements Commands {
       }
 
     } else if (OnePlayerTurn.kling) { // if you are klingon
-      if (KlingonFleet.a == Ship1) { // Well-Rounded Damage
+      if (Ship1.equals(KlingonFleet.a)) { // Well-Rounded Damage
         torpedo = 30 + damage.nextInt(10);
       }
-      if (KlingonFleet.b == Ship1) { // Offensive Damage
-        torpedo = 40 + damage.nextInt(10);
+      if (Ship1.equals(KlingonFleet.b)) { // Offensive Damage
+        torpedo = 30 + damage.nextInt(10);
       }
-      if (KlingonFleet.c == Ship1) { // Defensives Damage
-        torpedo = 20 + damage.nextInt(20);
+      if (Ship1.equals(KlingonFleet.c)) { // Defensives Damage
+        torpedo = 30 + damage.nextInt(10);
       }
-      if (FederationFleet.a == Ship2 | FederationFleet.b == Ship2 | FederationFleet.c == Ship2) {
+      if (Ship2.equals(FederationFleet.a) | Ship2.equals(FederationFleet.b) | Ship2.equals(FederationFleet.c)) {
         if (((KlingonFleet) Ship1).gettNum() >= 1) {
           System.out.println("The KDF " + ChooseShips.getkName() + " fired a spread of photon torpedos!\n");
           ((FederationFleet) Ship2).setShieldStrength(((FederationFleet) Ship2).getShieldStrength() - torpedo); // damage
@@ -231,7 +235,7 @@ public class Player implements Commands {
           ((KlingonFleet) Ship1).settNum(0);
         }
 
-      } else if (RomulanFleet.a == Ship2 | RomulanFleet.b == Ship2 | RomulanFleet.c == Ship2) {
+      } else if (Ship2.equals(RomulanFleet.a) | Ship2.equals(RomulanFleet.b) | Ship2.equals(RomulanFleet.c)) {
         if (((KlingonFleet) Ship1).gettNum() >= 1) {
           System.out.println("The KDF " + ChooseShips.getkName() + " fired a spread of photon torpedos!\n");
           ((RomulanFleet) Ship2).setShieldStrength(((RomulanFleet) Ship2).getShieldStrength() - torpedo); // damage
@@ -254,16 +258,16 @@ public class Player implements Commands {
         }
       }
     } else if(OnePlayerTurn.rom) {
-      if (RomulanFleet.a == Ship1) { // Well-Rounded Damage
+      if (Ship1.equals(RomulanFleet.a)) { // Well-Rounded Damage
         torpedo = 30 + damage.nextInt(10);
       }
-      if (RomulanFleet.b == Ship1) { // Offensive Damage
-        torpedo = 40 + damage.nextInt(10);
+      if (Ship1.equals(RomulanFleet.b)) { // Offensive Damage
+        torpedo = 30 + damage.nextInt(10);
       }
-      if (RomulanFleet.c == Ship1) { // Defensives Damage
-        torpedo = 20 + damage.nextInt(20);
+      if (Ship1.equals(RomulanFleet.c)) { // Defensives Damage
+        torpedo = 30 + damage.nextInt(10);
       }
-      if (FederationFleet.a == Ship2 | FederationFleet.b == Ship2 | FederationFleet.c == Ship2) {
+      if (Ship2.equals(FederationFleet.a) | Ship2.equals(FederationFleet.b) | Ship2.equals(FederationFleet.c)) {
         if (((RomulanFleet) Ship1).gettNum() >= 1) {
           System.out.println("The RSE " + ChooseShips.getrName() + " fired a spread of photon torpedos!\n");
           ((FederationFleet) Ship2).setShieldStrength(((FederationFleet) Ship2).getShieldStrength() - torpedo); // damage
@@ -284,7 +288,7 @@ public class Player implements Commands {
         } else if (((RomulanFleet) Ship1).gettNum() <= 0) {
           ((RomulanFleet) Ship1).settNum(0);
         }
-      } else if (KlingonFleet.a == Ship2 | KlingonFleet.b == Ship2 | KlingonFleet.c == Ship2) {
+      } else if (Ship2.equals(KlingonFleet.a) | Ship2.equals(KlingonFleet.b) | Ship2.equals(KlingonFleet.c)) {
         if (((RomulanFleet) Ship1).gettNum() >= 1) {
           System.out.println("The RSE " + ChooseShips.getrName() + " fired a spread of photon torpedos!\n");
           ((KlingonFleet) Ship2).setShieldStrength(((KlingonFleet) Ship2).getShieldStrength() - torpedo); // damage
@@ -368,13 +372,13 @@ public class Player implements Commands {
     if (OnePlayerTurn.fed) {
 
       int h = ((FederationFleet) Ship).gethullStrength();
-      if (FederationFleet.a == Ship) { // Well-Rounded repair
-        hull = 30 + repair.nextInt(10);
+      if (Ship.equals(FederationFleet.a)) { // Well-Rounded repair
+        hull = 35 + repair.nextInt(15);
       }
-      if (FederationFleet.b == Ship) { // Offensive Repair
-        hull = 30 + repair.nextInt(5);
+      if (Ship.equals(FederationFleet.b)) { // Offensive Repair
+        hull = 35 + repair.nextInt(15);
       }
-      if (FederationFleet.c == Ship) { // Defensive Repair
+      if (Ship.equals(FederationFleet.c)) { // Defensive Repair
         hull = 35 + repair.nextInt(15);
       }
       if (((FederationFleet) Ship).gethNum() >= 1) {
@@ -408,13 +412,13 @@ public class Player implements Commands {
 
       int h = ((KlingonFleet) Ship).gethullStrength();
 
-      if (KlingonFleet.a == Ship) { // Well-Rounded Repair
-        hull = 30 + repair.nextInt(10);
+      if (Ship.equals(KlingonFleet.a)) { // Well-Rounded Repair
+        hull = 35 + repair.nextInt(15);
       }
-      if (KlingonFleet.b == Ship) { // Offensive Repair
-        hull = 30 + repair.nextInt(5);
+      if (Ship.equals(KlingonFleet.b)) { // Offensive Repair
+        hull = 35 + repair.nextInt(15);
       }
-      if (KlingonFleet.c == Ship) { // Defensive Repair
+      if (Ship.equals(KlingonFleet.c)) { // Defensive Repair
         hull = 35 + repair.nextInt(15);
       }
       if (((KlingonFleet) Ship).gethNum() >= 1) {
@@ -446,13 +450,13 @@ public class Player implements Commands {
     } else if (OnePlayerTurn.rom) {
       int h = ((RomulanFleet) Ship).gethullStrength();
 
-      if (RomulanFleet.a == Ship) { // Well-Rounded Repair
-        hull = 30 + repair.nextInt(10);
+      if (Ship.equals(RomulanFleet.a)) { // Well-Rounded Repair
+        hull = 35 + repair.nextInt(15);
       }
-      if (RomulanFleet.b == Ship) { // Offensive Repair
-        hull = 30 + repair.nextInt(5);
+      if (Ship.equals(RomulanFleet.b)) { // Offensive Repair
+        hull = 35 + repair.nextInt(15);
       }
-      if (RomulanFleet.c == Ship) { // Defensive Repair
+      if (Ship.equals(RomulanFleet.c)) { // Defensive Repair
         hull = 35 + repair.nextInt(15);
       }
       if (((RomulanFleet) Ship).gethNum() >= 1) {
@@ -483,8 +487,4 @@ public class Player implements Commands {
     }
   }
 
-  @Override
-  public void attackMenu(Object Ship) {
-
-  }
 }

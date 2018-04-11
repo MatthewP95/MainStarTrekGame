@@ -1,17 +1,25 @@
 package move;
 
+import java.util.Random;
 import java.util.Scanner;
 
+import combatGround.Player;
 import enemy.RandomEnemy;
+import groundFaction.FederationGround;
+import groundFaction.KlingonGround;
 
 public class GroundMove {
 
-  public static String crew = "C";
+  private String crew = "C";
   private boolean battle;
   private boolean beam;
   private static int x = 1;
   private static int y = 1;
-  //private int scan = 10;
+  // private int scan = 10;
+
+  public String getCrew() {
+    return crew;
+  }
 
   public static int getX() {
     return x;
@@ -46,28 +54,47 @@ public class GroundMove {
   }
 
   public void beamUp() {
-    @SuppressWarnings("resource")
-    Scanner input = new Scanner(System.in);
-    // Locations loc = new Locations();
-    int choice;
+    System.out.println("Beaming us out now, Captain.");
+    setBeam(true);
 
-    do {
-      System.out.println("Shall we beam back up to the ship, Captain?");
-      System.out.println("1. Beam us out, now.");
-      System.out.println("2. No, let's just move on.");
-      choice = input.nextInt();
+  }
 
-    } while (choice < 1 | choice > 2);
+  public void flavorText() {
+    
+    Random rand = new Random();
+    int choose;
 
-    switch (choice) {
+    choose = rand.nextInt(5) + 1;
+    switch (choose) {
       case 1:
-        setBeam(true);
+        if (Player.player == FederationGround.FEDERATIONTACTICIAN || Player.player == FederationGround.FEDERATIONENGINEER || Player.player == FederationGround.FEDERATIONSCIENTIST) {
+          System.out.println("\nThere isn't much around you.\nHowever, you do find some indeginous plants.\nYou ask your science officer to observe it.");
+          System.out.println();
+        } else if (Player.player == KlingonGround.KLINGONTACTICIAN || Player.player == KlingonGround.KLINGONENGINEER || Player.player == KlingonGround.KLINGONSCIENTIST) {
+          System.out.println("There isn't much around you.\n");
+        }else System.out.println("placeholder\n");
         break;
       case 2:
-        setBeam(false);
-        // System.out.println("placeholderactivity");
+        if (Player.player == FederationGround.FEDERATIONTACTICIAN || Player.player == FederationGround.FEDERATIONENGINEER || Player.player == FederationGround.FEDERATIONSCIENTIST) {
+          System.out.println("\nThere is a strange animal that you encounter.\nAlthough it seems passive, you decide it best not to disturb it.");
+          System.out.println();
+        } else if (Player.player == KlingonGround.KLINGONTACTICIAN || Player.player == KlingonGround.KLINGONENGINEER || Player.player == KlingonGround.KLINGONSCIENTIST) {
+          System.out.println("\nThere is a strange animal that you encounter.\nYou and your crew hunt the beast." 
+              + "\nIt's corpse gets transported to the ship.\nYou will have a GLORIOUS feast once back on the ship.");
+        }else System.out.println("placeholder\n");
         break;
+      case 3:
+        System.out.println("\nplaceholder\n");
+        break;
+      case 4:
+        System.out.println("\nplaceholder\n");
+        break;
+      case 5:
+        System.out.println("\nplaceholder\n");
+        break;
+
     }
+
   }
 
   public void crewMove(String[][] eventMap, String[][] groundMap) throws InterruptedException {
@@ -81,46 +108,107 @@ public class GroundMove {
 
       System.out.println("Captain, where should we go?");
       System.out.println("1. North");
-      System.out.println("2. South");
-      System.out.println("3. East");
+      System.out.println("2. East");
+      System.out.println("3. South");
       System.out.println("4. West");
-      System.out.println("5. Scan");
+      System.out.println("5. Beam Up");
       choice = input.nextInt();
 
     } while (choice < 1 | choice > 5);
 
     switch (choice) {
       case 1:
+
         x--;
-        if (eventMap[x][y] == "E") {
+
+        if (x < 1) {
+          System.out.println("Going out of the destination's parameter.");
+          crewMove(eventMap, groundMap);
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
+          System.out.println("Encountering an opposing force:\n");
           re.spawnGroundEnemy();
           setBattle(true);
 
           break;
-        }
-        if (eventMap[x][y] == "P") {
-          beamUp();
+        } else if ("B".equals(eventMap[x][y])) {
+          System.out.println("place holder activity.");
           break;
-        }
-        if (x < 1) {
-          System.out.println("Going out of bounds, input new destination");
-          x++;
-
-          crewMove(eventMap, groundMap);
+        } else if ("~".equals(eventMap[x][y])) {
+          flavorText();
+          break;
         }
 
         break;
+
       case 2:
         y++;
-        if (eventMap[x][y] == "E") {
+        if (y > 10) {
+          System.out.println("Going out of bounds, input new destination");
+          y--;
+          crewMove(eventMap, groundMap);
+          break;
+        } else if ("B".equals(eventMap[x][y])) {
+          System.out.println("place holder activity.");
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
+          System.out.println("Encountering an opposing force:\n");
           re.spawnGroundEnemy();
           setBattle(true);
-
+          break;
+        } else if ("~".equals(eventMap[x][y])) {
+          flavorText();
           break;
         }
-        if (y < 20)
-          ;
+        break;
+
+      case 3:
+        x++;
+
+        if (x > 10) {
+          System.out.println("Going out of bounds, input new destination");
+          x--;
+          crewMove(eventMap, groundMap);
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
+          System.out.println("Encountering an opposing force:\n");
+          re.spawnGroundEnemy();
+          setBattle(true);
+          break;
+        } else if ("B".equals(eventMap[x][y])) {
+          System.out.println("place holder activity.");
+          break;
+        } else if ("~".equals(eventMap[x][y])) {
+          flavorText();
+          break;
+        }
+
+        break;
+
+      case 4:
+        y--;
+        if (y < 1) {
+          System.out.println("Going out of bounds, input new destination");
+          y++;
+          crewMove(eventMap, groundMap);
+          break;
+        } else if ("E".equals(eventMap[x][y])) {
+          System.out.println("Encountering an opposing force:\n");
+          re.spawnGroundEnemy();
+          setBattle(true);
+          break;
+        } else if ("B".equals(eventMap[x][y])) {
+          System.out.println("Placeholder activity.");
+          break;
+        } else if ("~".equals(eventMap[x][y])) {
+          flavorText();
+          break;
+        }
+
+        break;
+
+      case 5:
+        beamUp();
     }
   }
-
 }

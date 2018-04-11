@@ -2,12 +2,35 @@ package CombatSpace;
 
 import java.io.IOException;
 
-public class OnePlayerTurn {
+import spaceFaction.FederationFleet;
+import spaceFaction.KlingonFleet;
+import spaceFaction.RomulanFleet;
+
+public class SpaceCombat {
 
   static boolean fed;
   static boolean kling;
   static boolean rom;
-  public static boolean lose;
+  private static boolean lose;
+  
+  public static boolean isLose() {
+    return lose;
+  }
+
+
+  public static void setLose(boolean lose) {
+    SpaceCombat.lose = lose;
+  }
+
+  public static boolean isBattleEnd() {
+    return battleEnd;
+  }
+
+
+  public static void setBattleEnd(boolean battleEnd) {
+    SpaceCombat.battleEnd = battleEnd;
+  }
+
   private static boolean battleEnd;
  
 
@@ -22,7 +45,7 @@ public class OnePlayerTurn {
     if (ChooseShips.fed == true) {
       while (!gameEnded) { // while game isnt ended
 
-        if (KlingonFleet.a == Ship2 | KlingonFleet.b == Ship2 | KlingonFleet.c == Ship2) {
+        if (Ship2.equals(KlingonFleet.a) | Ship2.equals(KlingonFleet.b)  | Ship2.equals(KlingonFleet.c)) {
           fed = true;
           ((FederationFleet) Ship1).choose(Ship1, Ship2);
           if (((KlingonFleet) Ship2).gethullStrength() <= 0) {
@@ -38,12 +61,12 @@ public class OnePlayerTurn {
 
           if (((FederationFleet) Ship1).gethullStrength() <= 0) {
             System.out.println("The KDF " + ChooseShips.getkName() + " was victorious!");
-            lose = true;
+            setLose(true);
             
             
             break;
           }
-        } else if (RomulanFleet.a == Ship2 | RomulanFleet.b == Ship2 | RomulanFleet.c == Ship2) {
+        } else if (Ship2.equals(RomulanFleet.a)| Ship2.equals(RomulanFleet.b) | Ship2.equals(RomulanFleet.c)) {
           fed = true;
           ((FederationFleet) Ship1).choose(Ship1, Ship2);
           if (((RomulanFleet) Ship2).gethullStrength() <= 0) {
@@ -59,7 +82,7 @@ public class OnePlayerTurn {
 
           if (((FederationFleet) Ship1).gethullStrength() <= 0) {
             System.out.println("The RSE " + ChooseShips.getrName() + " was victorious!");
-            lose = true;
+            setLose(true);
             break;
           }
         }
@@ -69,7 +92,7 @@ public class OnePlayerTurn {
     if (ChooseShips.rom == true) {
       while (!gameEnded) {
 
-        if (FederationFleet.a == Ship2 | FederationFleet.b == Ship2 | FederationFleet.c == Ship2) {
+        if (Ship2.equals(FederationFleet.a)| Ship2.equals(FederationFleet.b)| Ship2.equals(FederationFleet.c)) {
           rom = true;
           ((RomulanFleet) Ship1).choose(Ship1, Ship2);
 
@@ -85,10 +108,10 @@ public class OnePlayerTurn {
 
           if (((RomulanFleet) Ship1).gethullStrength() <= 0) {
             System.out.println("The USS " + ChooseShips.getfName() + " was victorious!");
-            lose = true;
+            setLose(true);
             break;
           }
-        } else if (KlingonFleet.a == Ship2 | KlingonFleet.b == Ship2 | KlingonFleet.c == Ship2) {
+        } else if (Ship2.equals(KlingonFleet.a) | Ship2.equals(KlingonFleet.b)  | Ship2.equals(KlingonFleet.c)) {
 
           rom = true;
           ((RomulanFleet) Ship1).choose(Ship1, Ship2);
@@ -105,7 +128,7 @@ public class OnePlayerTurn {
 
           if (((RomulanFleet) Ship1).gethullStrength() <= 0) {
             System.out.println("The KDF " + ChooseShips.getkName() + " was victorious!");
-            lose = true;
+            setLose(true);
             break;
 
           }
@@ -116,7 +139,7 @@ public class OnePlayerTurn {
     if (ChooseShips.kling == true) {
       while (!gameEnded) {
 
-        if (FederationFleet.a == Ship2 | FederationFleet.b == Ship2 | FederationFleet.c == Ship2) {
+        if (Ship2.equals(FederationFleet.a)| Ship2.equals(FederationFleet.b)| Ship2.equals(FederationFleet.c)) {
           kling = true;
           ((KlingonFleet) Ship1).choose(Ship1, Ship2);
 
@@ -133,10 +156,10 @@ public class OnePlayerTurn {
 
           if (((KlingonFleet) Ship1).gethullStrength() <= 0) {
             System.out.println("The USS " + ChooseShips.getfName() + " was victorious!");
-            lose = true;
+            setLose(true);
             break;
           }
-        } else if (RomulanFleet.a == Ship2 | RomulanFleet.b == Ship2 | RomulanFleet.c == Ship2) {
+        } else if (Ship2.equals(RomulanFleet.a)| Ship2.equals(RomulanFleet.b) | Ship2.equals(RomulanFleet.c)) {
 
           kling = true;
           ((KlingonFleet) Ship1).choose(Ship1, Ship2);
@@ -154,21 +177,11 @@ public class OnePlayerTurn {
 
           if (((KlingonFleet) Ship1).gethullStrength() <= 0) {
             System.out.println("The RSE " + ChooseShips.getrName() + " was victorious!");
-            lose = true;
+            setLose(true);
             break;
           }
         }
       }
     }
-  }
-
-
-  public static boolean isBattleEnd() {
-    return battleEnd;
-  }
-
-
-  public static void setBattleEnd(boolean battleEnd) {
-    OnePlayerTurn.battleEnd = battleEnd;
   }
 }

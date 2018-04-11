@@ -1,6 +1,10 @@
-package CombatSpace;
+package spaceFaction;
 
 import java.io.IOException;
+
+import CombatSpace.ChooseShips;
+import CombatSpace.Commands;
+import CombatSpace.Player;
 
 public enum KlingonFleet {
 
@@ -72,12 +76,8 @@ public enum KlingonFleet {
     System.out.println("Captain, give an order: ");
     System.out.println("  1. Disrupter");
     System.out.println("  2. Torpedo | " + "you have " + ((KlingonFleet) kf).gettNum() + " left");
-    if (((KlingonFleet) kf).getShieldStrength() < 100) {
-      System.out.println("  3. Repair Shields | " + "you have " + ((KlingonFleet) kf).getrNum() + " left");
-    }
-    if (((KlingonFleet) kf).gethullStrength() < 100) {
-      System.out.println("  4. Hull Repair | " + "you have " + ((KlingonFleet) kf).gethNum() + " left");
-    }
+    System.out.println("  3. Repair Shields | " + "you have " + ((KlingonFleet) kf).getrNum() + " left");
+    System.out.println("  4. Hull Repair | " + "you have " + ((KlingonFleet) kf).gethNum() + " left");
     System.out.println("+++++++++++++++++++++++++++++++++++");
   }
 
@@ -93,7 +93,7 @@ public enum KlingonFleet {
       attackMenu(Ship1);
       choice = (char) System.in.read();
 
-      if ((choice == '2' && gettNum() == 0) | (choice == '3' && getrNum() == 0) | (choice == '4' && gethNum() == 0))
+      if ((choice == '2' & gettNum() == 0) || (choice == '3' & getrNum() == 0) || (choice == '4' & gethNum() == 0))
         System.out.println("choose again");
       else
         proceed = true;
@@ -111,9 +111,19 @@ public enum KlingonFleet {
         player.attack2(Ship1, Ship2);
         break;
       case '3':
+        if (((KlingonFleet) Ship1).getShieldStrength() == 100) {
+          System.out.println("Cannot Repair Shields");
+          choose(Ship1, Ship2);
+        }
+
         player.defence1(Ship1);
         break;
       case '4':
+        if (((KlingonFleet) Ship1).gethullStrength() == 100) {
+          System.out.println("Cannot Repair Hull.");
+          choose(Ship1, Ship2);
+        }
+
         player.defence2(Ship1);
         break;
     }

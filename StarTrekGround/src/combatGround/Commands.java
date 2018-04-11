@@ -2,11 +2,11 @@ package combatGround;
 
 public interface Commands {
 
-	void punch();
+	void punch(Object ai);
 	
-	void kick();
+	void kick(Object ai);
 	
-	void phaser();
+	void phaser(Object ai);
 	
 	void heal();
 	

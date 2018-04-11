@@ -4,6 +4,10 @@ import java.io.IOException;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
 
+import spaceFaction.FederationFleet;
+import spaceFaction.KlingonFleet;
+import spaceFaction.RomulanFleet;
+
 public class ChooseShips {
 
   public static Object x;
@@ -65,23 +69,23 @@ public class ChooseShips {
   }
 
   public String aiKName() {
-    // use AI Klingon Name
+    // use SpaceAi Klingon Name
 
     return kName = classAi.kName; // set predetermined name
   }
 
   public String aiFName() {
-    // use AI Federation Name
+    // use SpaceAi Federation Name
 
     return fName = classAi.fName; // set predetermined name
   }
 
   private String aiRName() {
-    // use AI Romulan Name
+    // use SpaceAi Romulan Name
     return rName = classAi.rName;
   }
 
-  Ai classAi = new Ai();
+  SpaceAi classAi = new SpaceAi();
 
   public void fedShip() { // Choice Display for Federation
     System.out.println("Federation Captain select a ship type: ");

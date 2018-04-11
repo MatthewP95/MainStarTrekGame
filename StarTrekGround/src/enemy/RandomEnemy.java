@@ -3,23 +3,24 @@ package enemy;
 import java.util.Random;
 
 import CombatSpace.ChooseShips;
-import CombatSpace.FederationFleet;
-import CombatSpace.KlingonFleet;
-import CombatSpace.RomulanFleet;
-import combatGround.Enemies;
+import groundFaction.FederationGround;
+import groundFaction.KlingonGround;
+import groundFaction.RomulanGround;
+import spaceFaction.FederationFleet;
+import spaceFaction.KlingonFleet;
+import spaceFaction.RomulanFleet;
 
 public class RandomEnemy {
 
-  Object Enemy;
+  public Object Enemy;
   Random random = new Random();
-  private int choice = random.nextInt(4) + 1;
 
   public void spawnSpaceEnemy() throws InterruptedException {
     ChooseShips cs = new ChooseShips();
     Random rand = new Random();
 
     int choose = rand.nextInt(2) + 1;
-    if (ChooseShips.x.equals(FederationFleet.a) | ChooseShips.x.equals(FederationFleet.b) | ChooseShips.x.equals(FederationFleet.c)) {
+    if (ChooseShips.x.equals(FederationFleet.a) || ChooseShips.x.equals(FederationFleet.b) || ChooseShips.x.equals(FederationFleet.c)) {
       switch (choose) {
         case 1:
           cs.aiChoiceK();
@@ -29,8 +30,8 @@ public class RandomEnemy {
           break;
       }
     }
-    if (ChooseShips.x.equals(KlingonFleet.a) | ChooseShips.x.equals(KlingonFleet.b) | ChooseShips.x.equals(KlingonFleet.c)) {
-      switch(choose) {
+    if (ChooseShips.x.equals(KlingonFleet.a) || ChooseShips.x.equals(KlingonFleet.b) || ChooseShips.x.equals(KlingonFleet.c)) {
+      switch (choose) {
         case 1:
           cs.aiChoiceF();
           break;
@@ -39,8 +40,8 @@ public class RandomEnemy {
           break;
       }
     }
-    if(ChooseShips.x.equals(RomulanFleet.a) | ChooseShips.x.equals(RomulanFleet.b) | ChooseShips.x.equals(RomulanFleet.c)) {
-      switch(choose) {
+    if (ChooseShips.x.equals(RomulanFleet.a) || ChooseShips.x.equals(RomulanFleet.b) || ChooseShips.x.equals(RomulanFleet.c)) {
+      switch (choose) {
         case 1:
           cs.aiChoiceF();
           break;
@@ -54,108 +55,292 @@ public class RandomEnemy {
   public void spawnGroundEnemy() {
     Random rand = new Random();
 
-    int chooseName = rand.nextInt(4) + 1;
+    int choice = random.nextInt(2) + 1;
+    int chooseRole = rand.nextInt(3) + 1;
 
-    switch (choice) {
-      case 1:
+    if (ChooseShips.x.equals(FederationFleet.a) || ChooseShips.x.equals(FederationFleet.b) || ChooseShips.x.equals(FederationFleet.c)) {
 
-        switch (chooseName) {
-          case 1:
-            Enemies.Klingon.setName("Klingon Warrior");
-            break;
-          case 2:
-            Enemies.Klingon.setName("Klingon Engineer");
-            break;
-          case 3:
-            Enemies.Klingon.setName("Klingon Captain");
-            break;
-          case 4:
-            Enemies.Klingon.setName("Klingon Pilot");
-            break;
+      switch (choice) {
 
-        }
+        case 1:
 
-        System.out.println(Enemies.Klingon.getName());
-        System.out.println(Enemies.Klingon.getHealth());
-        System.out.println(Enemies.Klingon.getStamina());
-        System.out.println();
-        Enemy = Enemies.Klingon;
-        break;
+          switch (chooseRole) {
 
-      case 2:
+            case 1:
 
-        switch (chooseName) {
-          case 1:
-            Enemies.Romulan.setName("Romulan Warrior");
-            break;
-          case 2:
-            Enemies.Romulan.setName("Romulan Engineer");
-            break;
-          case 3:
-            Enemies.Romulan.setName("Romulan Captain");
-            break;
-          case 4:
-            Enemies.Romulan.setName("Romulan Pilot");
-            break;
-        }
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getName());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getHealth());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getStamina());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getAttack());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getDefence());
 
-        System.out.println(Enemies.Romulan.getName());
-        System.out.println(Enemies.Romulan.getHealth());
-        System.out.println(Enemies.Romulan.getStamina());
-        System.out.println();
+              Enemy = KlingonGround.KLINGONTACTICIAN;
 
-        Enemy = Enemies.Romulan;
-        break;
+              break;
 
-      case 3:
+            case 2:
 
-        switch (chooseName) {
-          case 1:
-            Enemies.Gorn.setName("Gorn Warrior");
-            break;
-          case 2:
-            Enemies.Gorn.setName("Gorn Engineer");
-            break;
-          case 3:
-            Enemies.Gorn.setName("Gorn Captain");
-            break;
-          case 4:
-            Enemies.Gorn.setName("Romulan Pilot");
-            break;
-        }
+              System.out.println(KlingonGround.KLINGONENGINEER.getName());
+              System.out.println(KlingonGround.KLINGONENGINEER.getHealth());
+              System.out.println(KlingonGround.KLINGONENGINEER.getStamina());
+              System.out.println(KlingonGround.KLINGONENGINEER.getAttack());
+              System.out.println(KlingonGround.KLINGONENGINEER.getDefence());
 
-        System.out.println(Enemies.Gorn.getName());
-        System.out.println(Enemies.Gorn.getHealth());
-        System.out.println(Enemies.Gorn.getStamina());
-        System.out.println();
+              Enemy = KlingonGround.KLINGONENGINEER;
 
-        Enemy = Enemies.Gorn;
-        break;
+              break;
 
-      case 4:
-        switch (chooseName) {
-          case 1:
-            Enemies.GeneticEngineered.setName("Genetically Engineered Warrior");
-            break;
-          case 2:
-            Enemies.GeneticEngineered.setName("Genetically Engineered Engineer");
-            break;
-          case 3:
-            Enemies.GeneticEngineered.setName("Genetically Engineered Captain");
-            break;
-          case 4:
-            Enemies.GeneticEngineered.setName("Genetically Engineered Pilot");
-            break;
-        }
+            case 3:
 
-        System.out.println(Enemies.GeneticEngineered.getName());
-        System.out.println(Enemies.GeneticEngineered.getHealth());
-        System.out.println(Enemies.GeneticEngineered.getStamina());
-        System.out.println();
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getName());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getHealth());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getStamina());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getAttack());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getDefence());
 
-        Enemy = Enemies.GeneticEngineered;
-        break;
+              Enemy = KlingonGround.KLINGONSCIENTIST;
+
+              break;
+
+          }
+
+          break;
+
+        case 2:
+
+          switch (chooseRole) {
+
+            case 1:
+
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getName());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getHealth());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getStamina());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getAttack());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getDefence());
+
+              Enemy = RomulanGround.ROMULANTACTICIAN;
+
+              break;
+
+            case 2:
+
+              System.out.println(RomulanGround.ROMULANENGINEER.getName());
+              System.out.println(RomulanGround.ROMULANENGINEER.getHealth());
+              System.out.println(RomulanGround.ROMULANENGINEER.getStamina());
+              System.out.println(RomulanGround.ROMULANENGINEER.getAttack());
+              System.out.println(RomulanGround.ROMULANENGINEER.getDefence());
+
+              Enemy = RomulanGround.ROMULANENGINEER;
+
+              break;
+
+            case 3:
+
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getName());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getHealth());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getStamina());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getAttack());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getDefence());
+
+              Enemy = RomulanGround.ROMULANSCIENTIST;
+
+              break;
+
+          }
+
+          break;
+
+      }
+    }
+
+    if (ChooseShips.x.equals(KlingonFleet.a) || ChooseShips.x.equals(KlingonFleet.b) || ChooseShips.x.equals(KlingonFleet.c)) {
+
+      switch (choice) {
+
+        case 1:
+
+          switch (chooseRole) {
+
+            case 1:
+
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getName());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getHealth());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getStamina());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getAttack());
+              System.out.println(RomulanGround.ROMULANTACTICIAN.getDefence());
+
+              Enemy = RomulanGround.ROMULANTACTICIAN;
+
+              break;
+
+            case 2:
+
+              System.out.println(RomulanGround.ROMULANENGINEER.getName());
+              System.out.println(RomulanGround.ROMULANENGINEER.getHealth());
+              System.out.println(RomulanGround.ROMULANENGINEER.getStamina());
+              System.out.println(RomulanGround.ROMULANENGINEER.getAttack());
+              System.out.println(RomulanGround.ROMULANENGINEER.getDefence());
+
+              Enemy = RomulanGround.ROMULANENGINEER;
+
+              break;
+
+            case 3:
+
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getName());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getHealth());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getStamina());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getAttack());
+              System.out.println(RomulanGround.ROMULANSCIENTIST.getDefence());
+
+              Enemy = RomulanGround.ROMULANSCIENTIST;
+
+              break;
+
+          }
+
+          break;
+
+        case 2:
+
+          switch (chooseRole) {
+
+            case 1:
+
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getName());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getHealth());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getStamina());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getAttack());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getDefence());
+
+              Enemy = FederationGround.FEDERATIONTACTICIAN;
+
+              break;
+
+            case 2:
+
+              System.out.println(FederationGround.FEDERATIONENGINEER.getName());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getHealth());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getStamina());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getAttack());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getDefence());
+
+              Enemy = FederationGround.FEDERATIONENGINEER;
+
+              break;
+
+            case 3:
+
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getName());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getHealth());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getStamina());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getAttack());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getDefence());
+
+              Enemy = FederationGround.FEDERATIONSCIENTIST;
+
+              break;
+
+          }
+
+          break;
+
+      }
+    }
+
+    if (ChooseShips.x.equals(RomulanFleet.a) || ChooseShips.x.equals(RomulanFleet.b) || ChooseShips.x.equals(RomulanFleet.c)) {
+
+      switch (choice) {
+
+        case 1:
+
+          switch (chooseRole) {
+
+            case 1:
+
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getName());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getHealth());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getStamina());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getAttack());
+              System.out.println(FederationGround.FEDERATIONTACTICIAN.getDefence());
+
+              Enemy = FederationGround.FEDERATIONTACTICIAN;
+
+              break;
+
+            case 2:
+
+              System.out.println(FederationGround.FEDERATIONENGINEER.getName());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getHealth());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getStamina());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getAttack());
+              System.out.println(FederationGround.FEDERATIONENGINEER.getDefence());
+
+              Enemy = FederationGround.FEDERATIONENGINEER;
+
+              break;
+
+            case 3:
+
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getName());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getHealth());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getStamina());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getAttack());
+              System.out.println(FederationGround.FEDERATIONSCIENTIST.getDefence());
+
+              Enemy = FederationGround.FEDERATIONSCIENTIST;
+
+              break;
+
+          }
+
+          break;
+
+        case 2:
+
+          switch (chooseRole) {
+
+            case 1:
+
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getName());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getHealth());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getStamina());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getAttack());
+              System.out.println(KlingonGround.KLINGONTACTICIAN.getDefence());
+
+              Enemy = KlingonGround.KLINGONTACTICIAN;
+
+              break;
+
+            case 2:
+
+              System.out.println(KlingonGround.KLINGONENGINEER.getName());
+              System.out.println(KlingonGround.KLINGONENGINEER.getHealth());
+              System.out.println(KlingonGround.KLINGONENGINEER.getStamina());
+              System.out.println(KlingonGround.KLINGONENGINEER.getAttack());
+              System.out.println(KlingonGround.KLINGONENGINEER.getDefence());
+
+              Enemy = KlingonGround.KLINGONENGINEER;
+
+              break;
+
+            case 3:
+
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getName());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getHealth());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getStamina());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getAttack());
+              System.out.println(KlingonGround.KLINGONSCIENTIST.getDefence());
+
+              Enemy = KlingonGround.KLINGONSCIENTIST;
+
+              break;
+
+          }
+
+          break;
+
+      }
     }
   }
-
-}
+ }
