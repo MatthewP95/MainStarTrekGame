@@ -3,6 +3,7 @@ package CombatSpace;
 public interface Commands {
 
   int shieldStrength = 100; // Shields
+  
   int hullStrength = 100; // hull
 
   public void attack1(Object Ship1, Object Ship2);

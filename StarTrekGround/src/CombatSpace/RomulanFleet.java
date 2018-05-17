@@ -1,10 +1,6 @@
-package spaceFaction;
+package CombatSpace;
 
 import java.io.IOException;
-
-import CombatSpace.ChooseShips;
-import CombatSpace.Commands;
-import CombatSpace.Player;
 
 public enum RomulanFleet {
 

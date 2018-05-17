@@ -2,10 +2,6 @@ package CombatSpace;
 
 import java.util.Random;
 
-import spaceFaction.FederationFleet;
-import spaceFaction.KlingonFleet;
-import spaceFaction.RomulanFleet;
-
 public class SpaceAi {
 
   Object kling;
@@ -22,300 +18,472 @@ public class SpaceAi {
     if ( Ship2.equals(FederationFleet.a) || Ship2.equals(FederationFleet.c) || Ship2.equals(FederationFleet.c)) {
 
       if (Ship2.equals(FederationFleet.a)) { // Well-Rounded Damage
+        
         energy = 15 + damage.nextInt(10);
+        
       } else if (Ship2.equals(FederationFleet.c)) { // Offensive Damage
+        
         energy = 20 + damage.nextInt(10);
+        
       } else // Defensive damage
+        
         energy = 10 + damage.nextInt(10);
 
       if (Ship1.equals(KlingonFleet.a) || Ship1.equals(KlingonFleet.b) || Ship1.equals(KlingonFleet.c)) {
+        
         System.out.println("The USS " + ChooseShips.getfName() + " is firing phasers!\n");
+        
         ((KlingonFleet) Ship1).setShieldStrength(((KlingonFleet) Ship1).getShieldStrength() - energy); // damage
                                                                                                        // shields
         System.out.println("The USS " + ChooseShips.getfName() + " dealt " + energy + " damage.");
+        
         if (((KlingonFleet) Ship1).getShieldStrength() <= 0) {
+          
           int x = Math.abs(((KlingonFleet) Ship1).getShieldStrength());
+          
           ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                 // damage
                                                                                                 // to
                                                                                                 // hull
           ((KlingonFleet) Ship1).setShieldStrength(0); // set shields to 0
+          
         } else if (((KlingonFleet) Ship1).getShieldStrength() == 0) {
+          
           ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - energy); // damage
                                                                                                      // hull
         }
       } else if (Ship1.equals(RomulanFleet.a) || Ship1.equals(RomulanFleet.b) || Ship1.equals(RomulanFleet.c)) {
+        
         System.out.println("The USS " + ChooseShips.getfName() + " is firing phasers!\n");
+        
         ((RomulanFleet) Ship1).setShieldStrength(((RomulanFleet) Ship1).getShieldStrength() - energy); // damage
                                                                                                        // shields
         System.out.println("The USS " + ChooseShips.getfName() + " dealt " + energy + " damage.");
+        
         if (((RomulanFleet) Ship1).getShieldStrength() <= 0) {
+          
           int x = Math.abs(((RomulanFleet) Ship1).getShieldStrength());
+          
           ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                 // damage
                                                                                                 // to
                                                                                                 // hull
           ((RomulanFleet) Ship1).setShieldStrength(0); // set shields to 0
+          
         } else if (((RomulanFleet) Ship1).getShieldStrength() == 0) {
+          
           ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - energy); // damage
                                                                                                      // hull
         }
       }
     } else if (Ship2.equals(KlingonFleet.a) || Ship2.equals(KlingonFleet.b) || Ship2.equals(KlingonFleet.c)) {
+      
       if (Ship2.equals(KlingonFleet.a)) { // Well-Rounded Damage
+        
         energy = 15 + damage.nextInt(10);
+        
       } else if (Ship2.equals(KlingonFleet.b)) { // Offensive Damage
+        
         energy = 20 + damage.nextInt(10);
+        
       } else // Defensive Damage
+        
         energy = 10 + damage.nextInt(10);
 
       if (Ship1.equals(FederationFleet.a) || Ship1.equals(FederationFleet.b) || Ship1.equals(FederationFleet.c)) {
+        
         System.out.println("The KDF " + ChooseShips.getkName() + " is firing disruptors!\n");
+        
         ((FederationFleet) Ship1).setShieldStrength(((FederationFleet) Ship1).getShieldStrength() - energy); // damage
                                                                                                              // shields
         System.out.println("The KDF " + ChooseShips.getkName() + " dealt " + energy + " damage.");
+        
         if (((FederationFleet) Ship1).getShieldStrength() <= 0) {
+          
           int x = Math.abs(((FederationFleet) Ship1).getShieldStrength());
+          
           ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                       // damage
                                                                                                       // to
                                                                                                       // hull
           ((FederationFleet) Ship1).setShieldStrength(0); // set shields to 0
+          
         } else if (((FederationFleet) Ship1).getShieldStrength() == 0) {
+          
           ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - energy); // damage
                                                                                                            // hull
         }
       } else if (Ship1.equals(RomulanFleet.a) || Ship1.equals(RomulanFleet.b) || Ship1.equals(RomulanFleet.c)) {
+        
         System.out.println("The KDF " + ChooseShips.getkName() + " is firing disruptors!\n");
+        
         ((RomulanFleet) Ship1).setShieldStrength(((RomulanFleet) Ship1).getShieldStrength() - energy); // damage
                                                                                                        // shields
         System.out.println("The KDF " + ChooseShips.getkName() + " dealt " + energy + " damage.");
+        
         if (((RomulanFleet) Ship1).getShieldStrength() <= 0) {
+          
           int x = Math.abs(((RomulanFleet) Ship1).getShieldStrength());
+          
           ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                 // damage
                                                                                                 // to
                                                                                                 // hull
           ((RomulanFleet) Ship1).setShieldStrength(0); // set shields to 0
+          
         } else if (((RomulanFleet) Ship1).getShieldStrength() == 0) {
+          
           ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - energy); // damage
                                                                                                      // hull
         }
+        
       }
+      
     } else if (Ship2.equals(RomulanFleet.a) || Ship2.equals(RomulanFleet.b) || Ship2.equals(RomulanFleet.c)) {
+      
       if (Ship2.equals(RomulanFleet.a)) // Well-Rounded Damage
+        
         energy = 15 + damage.nextInt(10);
+      
       else if (Ship2.equals(RomulanFleet.b)) // Offensive Damage
+        
         energy = 20 + damage.nextInt(10);
+      
       else // Defensive damage
+        
         energy = 10 + damage.nextInt(10);
 
       if (Ship1.equals(KlingonFleet.a) || Ship1.equals(KlingonFleet.b) || Ship1.equals(KlingonFleet.c)) {
+        
         System.out.println("The RSE " + ChooseShips.getrName() + " is firing phasers!\n");
+        
         ((KlingonFleet) Ship1).setShieldStrength(((KlingonFleet) Ship1).getShieldStrength() - energy); // damage
                                                                                                        // shields
         System.out.println("The RSE " + ChooseShips.getrName() + " dealt " + energy + " damage.");
+        
         if (((KlingonFleet) Ship1).getShieldStrength() <= 0) {
+          
           int x = Math.abs(((KlingonFleet) Ship1).getShieldStrength());
+          
           ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                 // damage
                                                                                                 // to
                                                                                                 // hull
           ((KlingonFleet) Ship1).setShieldStrength(0); // set shields to 0
+          
         } else if (((KlingonFleet) Ship1).getShieldStrength() == 0) {
+          
           ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - energy); // damage
                                                                                                      // hull
         }
       } else if (Ship1.equals(FederationFleet.a) || Ship1.equals(FederationFleet.b) || Ship1.equals(FederationFleet.c)) {
+        
         System.out.println("The RSE " + ChooseShips.getrName() + " is firing phasers!\n");
+        
         ((FederationFleet) Ship1).setShieldStrength(((FederationFleet) Ship1).getShieldStrength() - energy); // damage
-        // shields
+                                                                                                             // shields
         System.out.println("The RSE " + ChooseShips.getrName() + " dealt " + energy + " damage.");
+        
         if (((FederationFleet) Ship1).getShieldStrength() <= 0) {
+          
           int x = Math.abs(((FederationFleet) Ship1).getShieldStrength());
+          
           ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - x); // remaining
-          // damage
-          // to
-          // hull
+                                                                                                      // damage
+                                                                                                      // to
+                                                                                                      // hull
           ((FederationFleet) Ship1).setShieldStrength(0); // set shields to 0
+          
         } else if (((FederationFleet) Ship1).getShieldStrength() == 0) {
+          
           ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - energy); // damage
-          // hull
+                                                                                                           // hull
         }
+        
       }
+      
     }
+    
   }
 
   public void aiAttack2(Object Ship1, Object Ship2) {
+    
     Random damage = new Random();
+    
     int torpedo = 0;
     // federation SpaceAi
     if (Ship2.equals(FederationFleet.a) || Ship2.equals(FederationFleet.c) || Ship2.equals(FederationFleet.c)) {
+      
       if (Ship2.equals(FederationFleet.a)) // Well Rounded Damage
+        
         torpedo = 30 + damage.nextInt(10);
 
       else if (Ship2.equals(FederationFleet.c)) // Offensive damage
+        
         torpedo = 40 + damage.nextInt(10);
 
       else // Defensive Damage
+        
         torpedo = 20 + damage.nextInt(20);
 
       if (Ship1.equals(KlingonFleet.a) || Ship1.equals(KlingonFleet.b) || Ship1.equals(KlingonFleet.c)) {
+        
         if (((FederationFleet) Ship2).gettNum() >= 1) {
+          
           System.out.println("The USS " + ChooseShips.getfName() + " fired a spread of photon torpedos!\n");
+          
           ((KlingonFleet) Ship1).setShieldStrength(((KlingonFleet) Ship1).getShieldStrength() - torpedo); // damage
                                                                                                           // shields
           System.out.println("The USS " + ChooseShips.getfName() + " dealt " + torpedo + " damage.");
+          
           if (((KlingonFleet) Ship1).getShieldStrength() <= 0) {
+            
             int x = Math.abs(((KlingonFleet) Ship1).getShieldStrength());
+            
             ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                   // damage
                                                                                                   // to
                                                                                                   // hull
             ((KlingonFleet) Ship1).setShieldStrength(0); // set shields to 0
+            
           } else if (((KlingonFleet) Ship1).getShieldStrength() == 0) {
+            
             ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - torpedo); // damage
                                                                                                         // hull
           }
+          
           ((FederationFleet) Ship2).settNum(((FederationFleet) Ship2).gettNum() - 1);
+          
         } else if (((FederationFleet) Ship2).gettNum() <= 0) {
+          
           ((FederationFleet) Ship2).settNum(0);
+          
         }
+        
       } else if (Ship1.equals(RomulanFleet.a) || Ship1.equals(RomulanFleet.b) || Ship1.equals(RomulanFleet.c)) {
+        
         if (((FederationFleet) Ship2).gettNum() >= 1) {
+          
           System.out.println("The USS " + ChooseShips.getfName() + " fired a spread of photon torpedos!\n");
+          
           ((RomulanFleet) Ship1).setShieldStrength(((RomulanFleet) Ship1).getShieldStrength() - torpedo); // damage
                                                                                                           // shields
           System.out.println("The USS " + ChooseShips.getfName() + " dealt " + torpedo + " damage.");
+          
           if (((RomulanFleet) Ship1).getShieldStrength() <= 0) {
+            
             int x = Math.abs(((RomulanFleet) Ship1).getShieldStrength());
+            
             ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                   // damage
                                                                                                   // to
                                                                                                   // hull
             ((RomulanFleet) Ship1).setShieldStrength(0); // set shields to 0
+            
           } else if (((RomulanFleet) Ship1).getShieldStrength() == 0) {
+            
             ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - torpedo); // damage
                                                                                                         // hull
           }
+          
           ((FederationFleet) Ship2).settNum(((FederationFleet) Ship2).gettNum() - 1);
+          
         } else if (((FederationFleet) Ship2).gettNum() <= 0) {
+          
           ((FederationFleet) Ship2).settNum(0);
+          
         }
+        
       }
       // Klingon SpaceAi
     } else if (Ship2.equals(KlingonFleet.a) || Ship2.equals(KlingonFleet.b) || Ship2.equals(KlingonFleet.c)) {
+      
       if (Ship2.equals(KlingonFleet.a)) { // Well-Rounded Damage
+        
         torpedo = 30 + damage.nextInt(10);
+        
       }
+      
       if (Ship2.equals(KlingonFleet.b)) { // Offensive Damage
+        
         torpedo = 40 + damage.nextInt(10);
+        
       }
+      
       if (Ship2.equals(KlingonFleet.c)) { // Defensives Damage
+        
         torpedo = 20 + damage.nextInt(20);
+        
       }
+      
       if (Ship1.equals(FederationFleet.a) || Ship1.equals(FederationFleet.b) || Ship1.equals(FederationFleet.c)) {
+        
         if (((KlingonFleet) Ship2).gettNum() >= 1) {
+          
           System.out.println("The KDF " + ChooseShips.getkName() + " fired a spread of photon torpedos!\n");
+          
           ((FederationFleet) Ship1).setShieldStrength(((FederationFleet) Ship1).getShieldStrength() - torpedo); // damage
                                                                                                                 // shields
           System.out.println("The KDF " + ChooseShips.getkName() + " dealt " + torpedo + " damage.");
+          
           if (((FederationFleet) Ship1).getShieldStrength() <= 0) {
+            
             int x = Math.abs(((FederationFleet) Ship1).getShieldStrength());
+            
             ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                         // damage
                                                                                                         // to
                                                                                                         // hull
             ((FederationFleet) Ship1).setShieldStrength(0); // set shields to 0
+            
           } else if (((FederationFleet) Ship1).getShieldStrength() == 0) {
+            
             ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - torpedo); // damage
                                                                                                               // hull
           }
+          
           ((KlingonFleet) Ship2).settNum(((KlingonFleet) Ship2).gettNum() - 1);
+          
         } else if (((KlingonFleet) Ship2).gettNum() <= 0) {
+          
           ((KlingonFleet) Ship2).settNum(0);
+          
         }
+        
       } else if (Ship1.equals(RomulanFleet.a) || Ship1.equals(RomulanFleet.b) || Ship1.equals(RomulanFleet.c)) {
+        
         if (((KlingonFleet) Ship2).gettNum() >= 1) {
+          
           System.out.println("The KDF " + ChooseShips.getkName() + " fired a spread of photon torpedos!\n");
+          
           ((RomulanFleet) Ship1).setShieldStrength(((RomulanFleet) Ship1).getShieldStrength() - torpedo); // damage
                                                                                                           // shields
           System.out.println("The KDF " + ChooseShips.getkName() + " dealt " + torpedo + " damage.");
+          
           if (((RomulanFleet) Ship1).getShieldStrength() <= 0) {
+            
             int x = Math.abs(((RomulanFleet) Ship1).getShieldStrength());
+            
             ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                   // damage
                                                                                                   // to
                                                                                                   // hull
             ((RomulanFleet) Ship1).setShieldStrength(0); // set shields to 0
+            
           } else if (((RomulanFleet) Ship1).getShieldStrength() == 0) {
+            
             ((RomulanFleet) Ship1).sethullStrength(((RomulanFleet) Ship1).gethullStrength() - torpedo); // damage
                                                                                                         // hull
           }
+          
           ((KlingonFleet) Ship2).settNum(((KlingonFleet) Ship2).gettNum() - 1);
+          
         } else if (((KlingonFleet) Ship2).gettNum() <= 0) {
+          
           ((KlingonFleet) Ship2).settNum(0);
+          
         }
+        
       }
       // Romulan SpaceAi
     } else if (Ship2.equals(RomulanFleet.a) || Ship2.equals(RomulanFleet.b) || Ship2.equals(RomulanFleet.c)) {
+      
       if (Ship2.equals(RomulanFleet.a)) { // Well-Rounded Damage
+        
         torpedo = 30 + damage.nextInt(10);
+        
       }
+      
       if (Ship2.equals(RomulanFleet.b)) { // Offensive Damage
+        
         torpedo = 40 + damage.nextInt(10);
+        
       }
+      
       if (Ship2.equals(RomulanFleet.c)) { // Defensives Damage
+        
         torpedo = 20 + damage.nextInt(20);
+        
       }
+      
       if (Ship1.equals(FederationFleet.a) || Ship1.equals(FederationFleet.b) || Ship1.equals(FederationFleet.c)) {
+        
         if (((RomulanFleet) Ship2).gettNum() >= 1) {
+          
           System.out.println("The RSE " + ChooseShips.getrName() + " fired a spread of photon torpedos!\n");
+          
           ((FederationFleet) Ship1).setShieldStrength(((FederationFleet) Ship1).getShieldStrength() - torpedo); // damage
                                                                                                                 // shields
           System.out.println("The RSE " + ChooseShips.getrName() + " dealt " + torpedo + " damage.");
+          
           if (((FederationFleet) Ship1).getShieldStrength() <= 0) {
+            
             int x = Math.abs(((FederationFleet) Ship1).getShieldStrength());
+            
             ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                         // damage
                                                                                                         // to
                                                                                                         // hull
             ((FederationFleet) Ship1).setShieldStrength(0); // set shields to 0
+            
           } else if (((FederationFleet) Ship1).getShieldStrength() == 0) {
+            
             ((FederationFleet) Ship1).sethullStrength(((FederationFleet) Ship1).gethullStrength() - torpedo); // damage
                                                                                                               // hull
           }
+          
           ((RomulanFleet) Ship2).settNum(((RomulanFleet) Ship2).gettNum() - 1);
+          
         } else if (((RomulanFleet) Ship2).gettNum() <= 0) {
+          
           ((RomulanFleet) Ship2).settNum(0);
+          
         }
+        
       } else if (Ship1.equals(KlingonFleet.a) || Ship1.equals(KlingonFleet.b) || Ship1.equals(KlingonFleet.c)) {
+        
         if (((RomulanFleet) Ship2).gettNum() >= 1) {
+          
           System.out.println("The RSE " + ChooseShips.getrName() + " fired a spread of photon torpedos!\n");
+          
           ((KlingonFleet) Ship1).setShieldStrength(((KlingonFleet) Ship1).getShieldStrength() - torpedo); // damage
                                                                                                           // shields
           System.out.println("The RSE " + ChooseShips.getrName() + " dealt " + torpedo + " damage.");
+          
           if (((KlingonFleet) Ship1).getShieldStrength() <= 0) {
+            
             int x = Math.abs(((KlingonFleet) Ship1).getShieldStrength());
+            
             ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - x); // remaining
                                                                                                   // damage
                                                                                                   // to
                                                                                                   // hull
             ((KlingonFleet) Ship1).setShieldStrength(0); // set shields to 0
+            
           } else if (((KlingonFleet) Ship1).getShieldStrength() == 0) {
+            
             ((KlingonFleet) Ship1).sethullStrength(((KlingonFleet) Ship1).gethullStrength() - torpedo); // damage
                                                                                                         // hull
           }
+          
           ((RomulanFleet) Ship2).settNum(((RomulanFleet) Ship2).gettNum() - 1);
+          
         } else if (((RomulanFleet) Ship2).gettNum() <= 0) {
+          
           ((RomulanFleet) Ship2).settNum(0);
+          
         }
+        
       }
+      
     }
+    
   }
 
   public void aiDefence1(Object Ship) {
+    
     Random repair = new Random();
+    
     int shield = 30 + repair.nextInt(10);
 
     if (Ship.equals(FederationFleet.a) || Ship.equals(FederationFleet.b) || Ship.equals(FederationFleet.c)) {

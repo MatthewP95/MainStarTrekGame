@@ -47,7 +47,7 @@ public class SpaceMove {
     @SuppressWarnings("resource")
     Scanner input = new Scanner(System.in);
     Player player = new Player();
-    // Locations loc = new Locations();
+
     int choice;
 
     do {

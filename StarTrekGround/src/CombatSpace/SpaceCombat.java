@@ -2,13 +2,9 @@ package CombatSpace;
 
 import java.io.IOException;
 
-import spaceFaction.FederationFleet;
-import spaceFaction.KlingonFleet;
-import spaceFaction.RomulanFleet;
-
 public class SpaceCombat {
 
-  static boolean fed;
+  public static boolean fed;
   static boolean kling;
   static boolean rom;
   private static boolean lose;

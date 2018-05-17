@@ -19,8 +19,6 @@ public class Game {
     RandomEnemy re = new RandomEnemy();
     ChooseShips choose = new ChooseShips();
     SpaceCombat sc = new SpaceCombat();
-    Object Ship1 = ChooseShips.x;
-    Object Ship2 = ChooseShips.y;
     String[][] starMap = new String[loc.X_AXIS][loc.Y_AXIS];
 
     choose.chooseShips();
@@ -39,7 +37,7 @@ public class Game {
         }
       } else if (sm.getBattle() & !SpaceCombat.isBattleEnd()) {
         re.spawnSpaceEnemy();
-        sc.spaceBattle(Ship1, Ship2);
+        sc.spaceBattle(ChooseShips.x, ChooseShips.y);
         SpaceCombat.setBattleEnd(false);
         sm.setBattle(false);
         if (SpaceCombat.isLose()) {

@@ -3,12 +3,12 @@ package enemy;
 import java.util.Random;
 
 import CombatSpace.ChooseShips;
-import groundFaction.FederationGround;
-import groundFaction.KlingonGround;
-import groundFaction.RomulanGround;
-import spaceFaction.FederationFleet;
-import spaceFaction.KlingonFleet;
-import spaceFaction.RomulanFleet;
+import CombatSpace.FederationFleet;
+import CombatSpace.KlingonFleet;
+import CombatSpace.RomulanFleet;
+import combatGround.FederationGround;
+import combatGround.KlingonGround;
+import combatGround.RomulanGround;
 
 public class RandomEnemy {
 

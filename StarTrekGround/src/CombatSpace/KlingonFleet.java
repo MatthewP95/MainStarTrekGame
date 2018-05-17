@@ -1,14 +1,10 @@
-package spaceFaction;
+package CombatSpace;
 
 import java.io.IOException;
 
-import CombatSpace.ChooseShips;
-import CombatSpace.Commands;
-import CombatSpace.Player;
+public enum KlingonFleet {
 
-public enum FederationFleet {
-
-  a("The USS " + ChooseShips.getfName(), 100, 100, 2, 3, 2), b("The USS " + ChooseShips.getfName(), 100, 100, 3, 2, 1), c("The USS " + ChooseShips.getfName(), 100, 100, 2, 4, 3);
+  a("The KDF " + ChooseShips.getkName(), 100, 100, 2, 3, 2), b("The KDF " + ChooseShips.getkName(), 100, 100, 3, 2, 1), c("The KDF " + ChooseShips.getkName(), 100, 100, 2, 4, 3);
 
   private int shieldStrength; // Shields
   private int hullStrength; // hull
@@ -16,7 +12,7 @@ public enum FederationFleet {
   private int rNum; // repair shields amount
   private int hNum; // hull repair amount
 
-  FederationFleet(String name, int shieldStrength, int hullStrength, int tNum, int rNum, int hNum) {
+  KlingonFleet(String name, int shieldStrength, int hullStrength, int tNum, int rNum, int hNum) {
 
     this.setShieldStrength(Commands.shieldStrength);
     this.sethullStrength(Commands.hullStrength);
@@ -66,18 +62,18 @@ public enum FederationFleet {
     this.hNum = hNum;
   }
 
-  public void attackMenu(Object ff) {
+  public void attackMenu(Object kf) {
 
     System.out.println("+++++++++++++++++++++++++++++++++++");
-    System.out.println("Federation Captain's Turn");
-    System.out.println("The USS " + ChooseShips.getfName() + ": \n");
-    System.out.println("Sheilds are at: " + ((FederationFleet) ff).getShieldStrength() + "%");
-    System.out.println("Hull is at: " + ((FederationFleet) ff).gethullStrength() + "%\n");
+    System.out.println("Klingon Captain's Turn\n");
+    System.out.println("The KDF " + ChooseShips.getkName() + ":");
+    System.out.println("Shields are at: " + ((KlingonFleet) kf).getShieldStrength() + "%");
+    System.out.println("Hull is at: " + ((KlingonFleet) kf).gethullStrength() + "%\n");
     System.out.println("Captain, give an order: ");
-    System.out.println("  1. Phasers");
-    System.out.println("  2. Torpedo | " + "you have " + ((FederationFleet) ff).gettNum() + " left");
-    System.out.println("  3. Repair Shields | " + "you have " + ((FederationFleet) ff).getrNum() + " left");
-    System.out.println("  4. Hull Repair | " + "you have " + ((FederationFleet) ff).gethNum() + " left");
+    System.out.println("  1. Disrupter");
+    System.out.println("  2. Torpedo | " + "you have " + ((KlingonFleet) kf).gettNum() + " left");
+    System.out.println("  3. Repair Shields | " + "you have " + ((KlingonFleet) kf).getrNum() + " left");
+    System.out.println("  4. Hull Repair | " + "you have " + ((KlingonFleet) kf).gethNum() + " left");
     System.out.println("+++++++++++++++++++++++++++++++++++");
   }
 
@@ -111,17 +107,19 @@ public enum FederationFleet {
         player.attack2(Ship1, Ship2);
         break;
       case '3':
-        if (((FederationFleet) Ship1).getShieldStrength() == 100) {
-          System.out.println("Cannot repair shields.");
+        if (((KlingonFleet) Ship1).getShieldStrength() == 100) {
+          System.out.println("Cannot Repair Shields");
           choose(Ship1, Ship2);
         }
+
         player.defence1(Ship1);
         break;
       case '4':
-        if (((FederationFleet) Ship1).gethullStrength() == 100) {
-          System.out.println("Cannot repair hull.");
-          choose(Ship1, Ship1);
+        if (((KlingonFleet) Ship1).gethullStrength() == 100) {
+          System.out.println("Cannot Repair Hull.");
+          choose(Ship1, Ship2);
         }
+
         player.defence2(Ship1);
         break;
     }

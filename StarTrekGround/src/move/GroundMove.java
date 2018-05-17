@@ -3,10 +3,10 @@ package move;
 import java.util.Random;
 import java.util.Scanner;
 
+import combatGround.FederationGround;
+import combatGround.KlingonGround;
 import combatGround.Player;
 import enemy.RandomEnemy;
-import groundFaction.FederationGround;
-import groundFaction.KlingonGround;
 
 public class GroundMove {
 
@@ -63,22 +63,23 @@ public class GroundMove {
     
     Random rand = new Random();
     int choose;
+    Player p = new Player();
 
     choose = rand.nextInt(5) + 1;
     switch (choose) {
       case 1:
-        if (Player.player == FederationGround.FEDERATIONTACTICIAN || Player.player == FederationGround.FEDERATIONENGINEER || Player.player == FederationGround.FEDERATIONSCIENTIST) {
+        if (p.player == FederationGround.FEDERATIONTACTICIAN || p.player == FederationGround.FEDERATIONENGINEER || p.player == FederationGround.FEDERATIONSCIENTIST) {
           System.out.println("\nThere isn't much around you.\nHowever, you do find some indeginous plants.\nYou ask your science officer to observe it.");
           System.out.println();
-        } else if (Player.player == KlingonGround.KLINGONTACTICIAN || Player.player == KlingonGround.KLINGONENGINEER || Player.player == KlingonGround.KLINGONSCIENTIST) {
+        } else if (p.player == KlingonGround.KLINGONTACTICIAN || p.player == KlingonGround.KLINGONENGINEER || p.player == KlingonGround.KLINGONSCIENTIST) {
           System.out.println("There isn't much around you.\n");
         }else System.out.println("placeholder\n");
         break;
       case 2:
-        if (Player.player == FederationGround.FEDERATIONTACTICIAN || Player.player == FederationGround.FEDERATIONENGINEER || Player.player == FederationGround.FEDERATIONSCIENTIST) {
+        if (p.player == FederationGround.FEDERATIONTACTICIAN || p.player == FederationGround.FEDERATIONENGINEER || p.player == FederationGround.FEDERATIONSCIENTIST) {
           System.out.println("\nThere is a strange animal that you encounter.\nAlthough it seems passive, you decide it best not to disturb it.");
           System.out.println();
-        } else if (Player.player == KlingonGround.KLINGONTACTICIAN || Player.player == KlingonGround.KLINGONENGINEER || Player.player == KlingonGround.KLINGONSCIENTIST) {
+        } else if (p.player == KlingonGround.KLINGONTACTICIAN || p.player == KlingonGround.KLINGONENGINEER || p.player == KlingonGround.KLINGONSCIENTIST) {
           System.out.println("\nThere is a strange animal that you encounter.\nYou and your crew hunt the beast." 
               + "\nIt's corpse gets transported to the ship.\nYou will have a GLORIOUS feast once back on the ship.");
         }else System.out.println("placeholder\n");

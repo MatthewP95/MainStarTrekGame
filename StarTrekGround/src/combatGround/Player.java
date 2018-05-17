@@ -3,26 +3,26 @@ package combatGround;
 import java.util.Random;
 import java.util.Scanner;
 
-import groundFaction.FederationGround;
-import groundFaction.KlingonGround;
-import groundFaction.RomulanGround;
-import spaceFaction.FederationFleet;
-import spaceFaction.KlingonFleet;
-import spaceFaction.RomulanFleet;
+import CombatSpace.FederationFleet;
+import CombatSpace.KlingonFleet;
+import CombatSpace.RomulanFleet;
 
 
 public class Player implements Commands {
 
-  public static Object player;
+  public Object player;
   private Scanner input;
   private int punch;
   private int crit;
 
   public void playerChoose(Object ship) {
+    
     input = new Scanner(System.in);
+    
     if (ship.equals(FederationFleet.a) || ship.equals(FederationFleet.b) || ship.equals(FederationFleet.c)) {
 
       System.out.println("Choose which officer to take charge:");
+      
       System.out.println("1. Federation Tactician.");
       System.out.println("\tHealth: " + FederationGround.FEDERATIONTACTICIAN.getHealth());
       System.out.println("\tStamina: " + FederationGround.FEDERATIONTACTICIAN.getStamina());
@@ -44,9 +44,11 @@ public class Player implements Commands {
       int choice = input.nextInt();
 
       switch (choice) {
+        
         case 1:
 
           System.out.println("You chose the Tactician Officer.");
+          
           player = FederationGround.FEDERATIONTACTICIAN;
 
           break;
@@ -54,6 +56,7 @@ public class Player implements Commands {
         case 2:
 
           System.out.println("You chose the Engineering Officer");
+          
           player = FederationGround.FEDERATIONENGINEER;
 
           break;
@@ -61,10 +64,13 @@ public class Player implements Commands {
         case 3:
 
           System.out.println("You chose the Science Officer");
+          
           player = FederationGround.FEDERATIONSCIENTIST;
 
           break;
+          
       }
+      
     }
 
     if (ship.equals(KlingonFleet.a) || ship.equals(KlingonFleet.b) || ship.equals(KlingonFleet.c)) {
@@ -95,6 +101,7 @@ public class Player implements Commands {
         case 1:
 
           System.out.println("You chose the Tactician Officer.");
+          
           player = KlingonGround.KLINGONTACTICIAN;
 
           break;
@@ -102,6 +109,7 @@ public class Player implements Commands {
         case 2:
 
           System.out.println("You chose the Engineering Officer");
+          
           player = KlingonGround.KLINGONENGINEER;
 
           break;
@@ -109,11 +117,13 @@ public class Player implements Commands {
         case 3:
 
           System.out.println("You chose the Science Officer");
+          
           player = KlingonGround.KLINGONSCIENTIST;
 
           break;
 
       }
+      
     }
 
     if (ship.equals(RomulanFleet.a) || ship.equals(RomulanFleet.b) || ship.equals(RomulanFleet.c)) {
@@ -144,6 +154,7 @@ public class Player implements Commands {
         case 1:
 
           System.out.println("You chose the Tactician Officer.");
+          
           player = RomulanGround.ROMULANTACTICIAN;
 
           break;
@@ -151,6 +162,7 @@ public class Player implements Commands {
         case 2:
 
           System.out.println("You chose the Engineering Officer");
+          
           player = RomulanGround.ROMULANENGINEER;
 
           break;
@@ -158,109 +170,190 @@ public class Player implements Commands {
         case 3:
 
           System.out.println("You chose the Science Officer");
+          
           player = RomulanGround.ROMULANSCIENTIST;
 
           break;
-
+ 
       }
+      
     }
+    
   }
 
   @Override
   public void punch(Object ai) {
-    // TODO Auto-generated method stub
+    
     Random damage = new Random();
    
     punch = damage.nextInt(FederationGround.FEDERATIONENGINEER.getAttack() + 2) + 7;
+    
     crit = damage.nextInt(10) + 1;
+    
     if(punch >= 10 && crit <= 3) {
+    
       System.out.print(punch + " ");
+      
       punch = punch + 5;
+      
       System.out.print("CRIT! ");
+    
     }
+    
     System.out.println(punch);
     
     if (FederationGround.FEDERATIONTACTICIAN.equals(player) || KlingonGround.KLINGONTACTICIAN.equals(player) || RomulanGround.ROMULANTACTICIAN.equals(player)) {
+    
       if (FederationGround.FEDERATIONTACTICIAN.equals(player)) {
+      
         punch = damage.nextInt(FederationGround.FEDERATIONTACTICIAN.getAttack() + 3) + 10;
+        
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 15 && crit <= 3 ) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
         
         System.out.println(FederationGround.FEDERATIONTACTICIAN.getName() + "dealt " + punch + " damage.");
+      
       }
+      
       if(KlingonGround.KLINGONTACTICIAN.equals(player)) {
+      
         punch = damage.nextInt(KlingonGround.KLINGONTACTICIAN.getAttack() + 3) + 10;
+      
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 15 && crit <= 3) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
+        
         System.out.println(KlingonGround.KLINGONTACTICIAN.getName() + "dealt " + punch + " damage.");
+      
       }
       
       if(RomulanGround.ROMULANTACTICIAN.equals(player)) {
+      
         punch = damage.nextInt(RomulanGround.ROMULANTACTICIAN.getAttack() + 3) + 10;
+        
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 15 && crit <= 3) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
+        
         System.out.println(RomulanGround.ROMULANTACTICIAN.getName() + "dealt " + punch + " damage.");
         
       }
+      
     }
 
     if (FederationGround.FEDERATIONENGINEER.equals(player) || KlingonGround.KLINGONENGINEER.equals(player) || RomulanGround.ROMULANENGINEER.equals(player)) {
+      
       if (FederationGround.FEDERATIONENGINEER.equals(player)) {
+      
         punch = damage.nextInt(FederationGround.FEDERATIONENGINEER.getAttack() + 2) + 7;
+        
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 10 && crit <= 3) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
+        
         System.out.println(punch); 
+      
       }
+      
       if (KlingonGround.KLINGONENGINEER.equals(player)) {
+      
         punch = damage.nextInt(KlingonGround.KLINGONENGINEER.getAttack() + 2) + 7;
+        
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 10 && crit <= 3) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
+        
         System.out.println(punch);
+      
       }
+      
       if(RomulanGround.ROMULANENGINEER.equals(player)) {
+      
         punch = damage.nextInt(RomulanGround.ROMULANENGINEER.getAttack() + 2) + 7;
+        
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 10 && crit <= 3) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
+        
         System.out.println(punch);
+      
       }
+      
     }
 
     if (FederationGround.FEDERATIONSCIENTIST.equals(player) || KlingonGround.KLINGONSCIENTIST.equals(player) ||RomulanGround.ROMULANSCIENTIST.equals(player)) {
+     
       if(FederationGround.FEDERATIONSCIENTIST.equals(player)) {
+      
         punch = damage.nextInt(FederationGround.FEDERATIONSCIENTIST.getAttack());
+        
         crit = damage.nextInt(10) + 1;
+        
         if(punch >= 10 && crit <= 3) {
+        
           System.out.print(punch + " ");
+          
           punch = punch + 5;
+          
           System.out.print("CRIT! ");
+        
         }
+        
         System.out.println(punch);
+      
       }
+    
     }
+  
   }
 
   @Override
