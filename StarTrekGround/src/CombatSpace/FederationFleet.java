@@ -4,7 +4,10 @@ import java.io.IOException;
 
 public enum FederationFleet {
 
-  a("The USS " + ChooseShips.getfName(), 100, 100, 2, 3, 2), b("The USS " + ChooseShips.getfName(), 100, 100, 3, 2, 1), c("The USS " + ChooseShips.getfName(), 100, 100, 2, 4, 3);
+  a("The USS " + ChooseShips.getfName(), 100, 100, 2, 3, 2), 
+  b("The USS " + ChooseShips.getfName(), 100, 100, 3, 2, 1), 
+  c("The USS " + ChooseShips.getfName(), 100, 100, 2, 4, 3);
+  
 
   
   private int shieldStrength; // Shields

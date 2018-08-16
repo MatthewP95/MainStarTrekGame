@@ -16,15 +16,15 @@ public class Locations {
   public final int GYAXIS = 11;
   
   
-  String enemy = "E";
+  private String enemy = "E";
   
-  String planet = "P";
+  private String planet = "P";
   
-  String space = "*";
+  private String space = "*";
   
-  String building = "B";
+  private String building = "B";
   
-  String ground = "~";
+  private String ground = "~";
   
   
   SpaceMove sm = new SpaceMove();
@@ -79,7 +79,7 @@ public class Locations {
 
     boolean DEBUG = false;
 
-    System.out.println("B = Building, ~ = ground\n");
+    System.out.println("\nB = Building, ~ = ground\n");
     
     for (int i = 1; i < groundMap.length; i++) {
 
@@ -103,7 +103,7 @@ public class Locations {
           
         } else if (GroundMove.getX() == i && GroundMove.getY() == j)
           
-          System.out.print(gm.getCrew());
+          System.out.print(gm.getCrew()); 
         
         else if (building.equals(groundMap[i][j]))
           
@@ -180,7 +180,7 @@ public class Locations {
 
     boolean DEBUG = false;
     
-    System.out.println("P = planet, * = space\n");
+    System.out.println("\nP = planet, * = space\n");
 
     for (int i = 1; i < starMap.length; i++) {
 
